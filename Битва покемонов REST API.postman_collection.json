@@ -1,0 +1,1783 @@
+{
+	"info": {
+		"_postman_id": "77e2442d-09d8-479d-a36c-01701c5aabc3",
+		"name": "Битва покемонов REST API",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" width=\"2162\" height=\"1530\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38970263"
+	},
+	"item": [
+		{
+			"name": "Битва покемонов REST API обычные запросы",
+			"item": [
+				{
+					"name": "Регистрация тренера",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n    \"trainer_token\": \"{{Token}}\",\r\n    \"email\": \"my-cop2017@yandex.ru\",\r\n    \"password\": \"YLDLZtc!thgnF4r\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/trainers/reg",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"trainers",
+								"reg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Подтверждение почты",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n    \"trainer_token\": \"{{Token}}\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/trainers/confirm_email",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"trainers",
+								"confirm_email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Смена пароля",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password_old\": \"YLDLZtc!thF4r\",\r\n    \"password_new\": \"YLDLZtc!thgnF4r\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/trainers/edit_password",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"trainers",
+								"edit_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение списка тренеров",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/trainers?city=Самара&city=Samara&level=1&sort=asc_price",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"trainers"
+							],
+							"query": [
+								{
+									"key": "city",
+									"value": "Самара"
+								},
+								{
+									"key": "city",
+									"value": "Samara"
+								},
+								{
+									"key": "level",
+									"value": "1"
+								},
+								{
+									"key": "sort",
+									"value": "asc_price"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Обновление инф. по тренеру",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Li Christmas\",\r\n    \"city\": \"Самара\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/trainers",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"trainers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Частичное обновление инф. по тренеру",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Li Christmas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/trainers",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"trainers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Создание покемона",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFirstName}}\",\r\n    \"photo_id\": \"{{$randomInt}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/pokemons",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"pokemons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение списка покемонов",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/pokemons?status=1&sort=asc_attack&in_pokeball=1&attack=1,2,3",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"pokemons"
+							],
+							"query": [
+								{
+									"key": "stage",
+									"value": "6",
+									"disabled": true
+								},
+								{
+									"key": "attack",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "1"
+								},
+								{
+									"key": "sort",
+									"value": "asc_attack"
+								},
+								{
+									"key": "in_pokeball",
+									"value": "1"
+								},
+								{
+									"key": "attack",
+									"value": "1,2",
+									"disabled": true
+								},
+								{
+									"key": "attack",
+									"value": "1,2,3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменить покемона",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pokemon_id\": \"85147\",\r\n    \"name\": \"pip\",\r\n    \"photo_id\": 533\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/pokemons",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"pokemons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Отправить покемона в нокаут",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pokemon_id\": \"93260\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/pokemons/knockout",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"pokemons",
+								"knockout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Поймать покемона в покебол",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pokemon_id\": \"88533\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/trainers/add_pokeball",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"trainers",
+								"add_pokeball"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Выселить покемона из покебола",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pokemon_id\": \"93260\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/trainers/delete_pokeball",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"trainers",
+								"delete_pokeball"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Битва покемонов",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"attacking_pokemon\": \"85591\",\r\n    \"defending_pokemon\": \"85526\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/battle",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"battle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получения списка прошедших битв",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/battle?trainer_id=12647&page=1",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"battle"
+							],
+							"query": [
+								{
+									"key": "stage",
+									"value": "6",
+									"disabled": true
+								},
+								{
+									"key": "attack",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "asc_attack",
+									"disabled": true
+								},
+								{
+									"key": "in_pokeball",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "attack",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "trainer_id",
+									"value": "12647"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Информация про своего тренера",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/me",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получить ошибку 500",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/debug_sentry",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"debug_sentry"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Битва покемонов REST API + skript",
+			"item": [
+				{
+					"name": "Создание и добавление в покебол",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const options = {\r",
+									"    url: \"https://api.pokemonbattle.ru/v2/pokemons\",\r",
+									"    method: 'POST',\r",
+									"    header: { 'content-type': 'application/json',\r",
+									"              'trainer_token': '237f5fa8eceb7c002492a7cfc9ed9a30'},\r",
+									"    body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: JSON.stringify({\r",
+									"    \"name\": \"Mister\",\r",
+									"    \"photo_id\": \"-1\"\r",
+									"})\r",
+									"\r",
+									"    }\r",
+									"};\r",
+									"\r",
+									"pm.sendRequest(options, function (error, response) {\r",
+									"    var jsonData1 = response.json();\r",
+									"    pm.collectionVariables.set(\"my_pok_id\", jsonData1.id);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pokemon_id\": \"{{my_pok_id}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/trainers/add_pokeball",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"trainers",
+								"add_pokeball"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Запрос списка и битва покемонов",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.sendRequest(\"https://api.pokemonbattle.ru/v2/pokemons?status=1&trainer_id=12647\", function (err, response) {\r",
+									"var jsonData2 = response.json(); // сохраним весь ответ от бекенда в переменную jsonData1\r",
+									"\r",
+									"pm.collectionVariables.set(\"my_pok_id_1\", jsonData2.data[0].id);  // сохраним id своего покемона в переменные\r",
+									"});\r",
+									"\r",
+									"pm.sendRequest(\"https://api.pokemonbattle.ru/v2/pokemons?status=1&sort=asc_attack&in_pokeball=1\", function (err, response) {\r",
+									"var jsonData3 = response.json(); // сохраним весь ответ от бекенда в переменную jsonData1\r",
+									"\r",
+									"pm.collectionVariables.set(\"prot_id\", jsonData3.data[5].id);  // сохраним id противника в переменные\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка времени ответа микросервиса\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"pm.test(\"Битва успешна\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"const jsonData1 = pm.response.json();\r",
+									"pm.test(\"Проверка ответа на тип значений\", () => {\r",
+									"  pm.expect(jsonData1).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Наличие в ответе в headers ключа Content-Length\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Length\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true,
+							"user-agent": true,
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "trainer_token",
+								"value": "237f5fa8eceb7c002492a7cfc9ed9a30",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"attacking_pokemon\": \"{{my_pok_id_1}}\",\r\n    \"defending_pokemon\": \"{{prot_id}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/battle",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"battle"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Удаление покемона + skript",
+			"item": [
+				{
+					"name": "Удалить покемона",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.sendRequest(\"https://api.pokemonbattle.ru/v2/pokemons?status=1&trainer_id=12647\", function (err, response) {\r",
+									"var jsonData1 = response.json(); // сохраним весь ответ от бекенда в переменную jsonData1\r",
+									"\r",
+									"pm.collectionVariables.set(\"my_id\", jsonData1.data[0].id);  // сохраним id покемона в переменные\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "trainer_token",
+								"value": "237f5fa8eceb7c002492a7cfc9ed9a30",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"pokemon_id\": \"{{my_id}}\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/{{api_version}}/pokemons/knockout",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{api_version}}",
+								"pokemons",
+								"knockout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Покупка аватара",
+			"item": [
+				{
+					"name": "Транзакция успешна",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка времени ответа микросервиса\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"pm.test(\"Статус ответа = 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Проверка результата ответа бэкэнда\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Транзакция успешна\");\r",
+									"});\r",
+									"\r",
+									"const jsonData1 = pm.response.json();\r",
+									"pm.test(\"Проверка ответа на тип значений\", () => {\r",
+									"  pm.expect(jsonData1).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Наличие в ответе в headers ключа Content-Length\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Length\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_type\": \"avatar\",\r\n    \"details\": {\r\n        \"avatar_id\": \"4\",\r\n        \"card_number\": \"4111111111111111\",\r\n        \"card_name\": \"{{$randomBankAccountName}}\",\r\n        \"card_actual\": \"10/25\",\r\n        \"card_cvv\": \"125\",\r\n        \"secure_code\": \"56456\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lavka.pokemonbattle.ru/payments",
+							"protocol": "https",
+							"host": [
+								"lavka",
+								"pokemonbattle",
+								"ru"
+							],
+							"path": [
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Не указываем token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка времени ответа микросервиса\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"pm.test(\"Статус ответа = 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"const jsonData1 = pm.response.json();\r",
+									"pm.test(\"Проверка ответа на тип значений\", () => {\r",
+									"  pm.expect(jsonData1).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_type\": \"avatar\",\r\n    \"details\": {\r\n        \"avatar_id\": \"4\",\r\n        \"card_number\": \"4111111111111111\",\r\n        \"card_name\": \"{{$randomBankAccountName}}\",\r\n        \"card_actual\": \"10/25\",\r\n        \"card_cvv\": \"125\",\r\n        \"secure_code\": \"56456\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lavka.pokemonbattle.ru/payments",
+							"protocol": "https",
+							"host": [
+								"lavka",
+								"pokemonbattle",
+								"ru"
+							],
+							"path": [
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Нет денег на карте (cvv=300)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка времени ответа микросервиса\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"pm.test(\"Статус ответа = 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Проверка результата ответа бэкэнда\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Недостаточно средств для оплаты\");\r",
+									"});\r",
+									"\r",
+									"const jsonData1 = pm.response.json();\r",
+									"pm.test(\"Проверка ответа на тип значений\", () => {\r",
+									"  pm.expect(jsonData1).to.be.an(\"object\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_type\": \"avatar\",\r\n    \"details\": {\r\n        \"avatar_id\": \"4\",\r\n        \"card_number\": \"4111111111111111\",\r\n        \"card_name\": \"{{$randomBankAccountName}}\",\r\n        \"card_actual\": \"10/25\",\r\n        \"card_cvv\": \"300\",\r\n        \"secure_code\": \"56456\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lavka.pokemonbattle.ru/payments",
+							"protocol": "https",
+							"host": [
+								"lavka",
+								"pokemonbattle",
+								"ru"
+							],
+							"path": [
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Неправильное cvv",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка времени ответа микросервиса\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"pm.test(\"Статус ответа = 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Проверка результата ответа бэкэнда\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Не верный CVV код для данной карты\");\r",
+									"});\r",
+									"\r",
+									"const jsonData1 = pm.response.json();\r",
+									"pm.test(\"Проверка ответа на тип значений\", () => {\r",
+									"  pm.expect(jsonData1).to.be.an(\"object\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_type\": \"avatar\",\r\n    \"details\": {\r\n        \"avatar_id\": \"4\",\r\n        \"card_number\": \"4111111111111111\",\r\n        \"card_name\": \"{{$randomBankAccountName}}\",\r\n        \"card_actual\": \"10/25\",\r\n        \"card_cvv\": \"124\",\r\n        \"secure_code\": \"56456\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lavka.pokemonbattle.ru/payments",
+							"protocol": "https",
+							"host": [
+								"lavka",
+								"pokemonbattle",
+								"ru"
+							],
+							"path": [
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Неверный номер карты (не проходит алгоритм (Луна)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка времени ответа микросервиса\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"pm.test(\"Статус ответа = 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Проверка результата ответа бэкэнда\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Неправильный номер карты. Ошибка проверки по Luhn\");\r",
+									"});\r",
+									"\r",
+									"const jsonData1 = pm.response.json();\r",
+									"pm.test(\"Проверка ответа на тип значений\", () => {\r",
+									"  pm.expect(jsonData1).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_type\": \"avatar\",\r\n    \"details\": {\r\n        \"avatar_id\": \"4\",\r\n        \"card_number\": \"4111156111111111\",\r\n        \"card_name\": \"german dolnikov\",\r\n        \"card_actual\": \"10/25\",\r\n        \"card_cvv\": \"125\",\r\n        \"secure_code\": \"56456\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lavka.pokemonbattle.ru/payments",
+							"protocol": "https",
+							"host": [
+								"lavka",
+								"pokemonbattle",
+								"ru"
+							],
+							"path": [
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Проверка даты (>2035г)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка времени ответа микросервиса\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"pm.test(\"Статус ответа = 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Проверка результата ответа бэкэнда\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Введена некорректная дата окончания срока действия карты, либо срок действия карты истек\");\r",
+									"});\r",
+									"\r",
+									"const jsonData1 = pm.response.json();\r",
+									"pm.test(\"Проверка ответа на тип значений\", () => {\r",
+									"  pm.expect(jsonData1).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Наличие в ответе в headers ключа Content-Length\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Length\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_type\": \"avatar\",\r\n    \"details\": {\r\n        \"avatar_id\": \"4\",\r\n        \"card_number\": \"4111111111111111\",\r\n        \"card_name\": \"{{$randomBankAccountName}}\",\r\n        \"card_actual\": \"10/36\",\r\n        \"card_cvv\": \"125\",\r\n        \"secure_code\": \"56456\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lavka.pokemonbattle.ru/payments",
+							"protocol": "https",
+							"host": [
+								"lavka",
+								"pokemonbattle",
+								"ru"
+							],
+							"path": [
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Неправильный пароль от СМС-ки",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка времени ответа микросервиса\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"pm.test(\"Статус ответа = 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Проверка результата ответа бэкэнда\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Неправильно введен подтверждающий код 3D-secure\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Проверка результата ответа бэкэнда\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.status).to.eql(\"error\");\r",
+									"});\r",
+									"\r",
+									"const jsonData1 = pm.response.json();\r",
+									"pm.test(\"Проверка ответа на тип значений\", () => {\r",
+									"  pm.expect(jsonData1).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Наличие в ответе в headers ключа Content-Length\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Length\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_type\": \"avatar\",\r\n    \"details\": {\r\n        \"avatar_id\": \"4\",\r\n        \"card_number\": \"4111111111111111\",\r\n        \"card_name\": \"{{$randomBankAccountName}}\",\r\n        \"card_actual\": \"10/26\",\r\n        \"card_cvv\": \"125\",\r\n        \"secure_code\": \"5642\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lavka.pokemonbattle.ru/payments",
+							"protocol": "https",
+							"host": [
+								"lavka",
+								"pokemonbattle",
+								"ru"
+							],
+							"path": [
+								"payments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Покупка премиума",
+			"item": [
+				{
+					"name": "Транзакция успешна",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка времени ответа микросервиса\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"pm.test(\"Статус ответа = 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Проверка результата ответа бэкэнда\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Транзакция успешна\");\r",
+									"});\r",
+									"\r",
+									"const jsonData1 = pm.response.json();\r",
+									"pm.test(\"Проверка ответа на тип значений\", () => {\r",
+									"  pm.expect(jsonData1).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Наличие в ответе в headers ключа Content-Length\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Length\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "trainer_token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_type\": \"premium\",\r\n    \"details\": {\r\n        \"days\": \"12\",\r\n        \"card_number\": \"4111111111111111\",\r\n        \"card_name\": \"{{$randomBankAccountName}}\",\r\n        \"card_actual\": \"10/25\",\r\n        \"card_cvv\": \"125\",\r\n        \"secure_code\": \"56456\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lavka.pokemonbattle.ru/payments",
+							"protocol": "https",
+							"host": [
+								"lavka",
+								"pokemonbattle",
+								"ru"
+							],
+							"path": [
+								"payments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "my_pok_id",
+			"value": ""
+		},
+		{
+			"key": "my_id",
+			"value": ""
+		},
+		{
+			"key": "prot_id",
+			"value": ""
+		},
+		{
+			"key": "my_pok_id_1",
+			"value": ""
+		},
+		{
+			"key": "Token",
+			"value": "237f5fa8eceb7c002492a7cfc9ed9a30",
+			"type": "string"
+		},
+		{
+			"key": "api_version",
+			"value": "v2",
+			"type": "string"
+		},
+		{
+			"key": "Host",
+			"value": "https://api.pokemonbattle.ru",
+			"type": "string"
+		}
+	]
+}
